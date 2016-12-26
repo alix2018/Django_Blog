@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'appli_blog',
 ]
 
 MIDDLEWARE = [
@@ -103,7 +104,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-FR'
+# Fuseau horaire, pour l'enregistrement et l'affichage des dates
+# Laissez UTC dans le cas de l'Europe de l'Ouest, c'est notre fuseau ;)
+TIME_ZONE = 'UTC'
 
 TIME_ZONE = 'UTC'
 
@@ -118,3 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)

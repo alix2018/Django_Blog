@@ -1,3 +1,49 @@
-<h1>{{ article.titre }} <span class="small">dans {{ article.categorie.nom }}</span></h1>
-<p class="infos">Rédigé par {{ article.auteur }}, le {{ article.date|date:"DATE_FORMAT" }}</p>
-<div class="contenu">{{ article.contenu|linebreaks }}</div>
+{% extends "appli_blog/layout.html" %}
+
+{% block title %}{{ article.titre }}{% endblock %}
+
+{% block content %}
+
+	<p>
+		<a href="{% url 'accueil' %}">Retour à la liste des articles</a>
+	</p>
+
+	<h2 class="titre-article">{{ article.titre }}</h2>
+	<p class="infos-article">Par {{ article.auteur }}, le {{ article.date }}</p>
+
+	<div class="contenu-article">
+		{{ article.contenu }}
+	</div>
+
+	<h3 class="titre-comments">Commentaires</h3>
+
+	<div class="commentaire">
+		{% for coms in commentaires %}
+		<li><p><i>Par {{ coms.pseudo }}, le {{coms.date }}</i></p>
+		<p> {{coms.contenu}}</p>
+		</li>
+		{% endfor %}
+	</div>
+	
+	<h4>Poster votre propre commentaire</h4>
+	
+	<form method="post" action="{% url 'lire' article.id %}" class="pure-form">
+
+		{% csrf_token %}
+
+		{{ form.as_p }}
+	
+	</br>
+	<p style="text-align:center">
+		<input class="pure-button pure-button-primary" type="submit" />	
+	</p>
+	</form>
+	
+	{% if envoi == True %}  </br><FONT color="red"> Votre Commentaire a bien été enregistré ! </FONT>{% endif %}
+	
+	<div class="clear"></div>
+
+	
+
+
+{% endblock %}

@@ -1,11 +1,24 @@
-<h1>Bienvenue sur mon blog !</h1>
+{% extends "appli_blog/layout.html" %}
 
-{% for article in derniers_articles %}
-    <div class="article">
-    	<h3>{{ article.titre }}</h3>
-    	<p>{{ article.contenu|truncatewords_html:80 }}</p>
-        <p><a href="{% url 'lire' article.id %}">Lire la suite</a>
-    </div>
-{% empty %}
-    <p>Aucun article.</p>
-{% endfor %}
+
+{% block title %}Accueil du blog{% endblock %}
+
+{% block content %}
+	<h1>Derniers articles</h1>
+
+	{% for article in articles %}
+		<h2 class="titre-article">{{ article.titre }}</h2>
+		
+
+		<p class="infos-article">Le {{ article.date|date:'SHORT_DATETIME_FORMAT' }}</p>
+
+		<div class="contenu-article">
+			{{ article.contenu|truncatewords_html:30 }}
+		</div>
+
+		<p><a href="{% url 'lire' article.id %}">Lire la suite</a></p>
+
+		<hr />
+	{% endfor %}
+
+{% endblock %}

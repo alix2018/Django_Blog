@@ -4,31 +4,34 @@
 {% block title %}Accueil du blog{% endblock %}
 
 {% block content %}
-	<h1 class="titre-liste">Liste des articles</h1>
+  <div class="panel panel-info">
+      <div class="panel-heading">Accueil</div>
+        <div class="panel-body">
+			<h1 class="titre-liste">Liste des articles</h1>
 
-	{% for article in articles %}
-	<div class="panel panel-default">
-	  <div class="panel-body">
-	    <div class="row">
-		      <h3 class="titre-article">{{ article.titre }}</h3>
-		        <div class="row">
-		          <div class="col-xs-12">
-		          	<div class="content-article">
-		        		<p>{{ article.contenu|truncatewords_html:30 }}</p>
-		        	</div>
-		            <div class="bouton-lire">
-				      <a href="{% url 'lire' article.id %}" class="btn btn-md btn-default" type="button">
-					  Lire la suite</a></div>
-				    <div class="row">
-				    <span class = "date-right">
-					  Publié le {{ article.date|date:'SHORT_DATETIME_FORMAT' }}
-				    </span>
-				    </div>
-			      </div>
-			    </div>
-		 </div>
-	  </div>
-	</div>
+			{% for article in articles %}
+			<div class="panel panel-default">
+			  <div class="panel-body">
+			    <div class="row">
+				      <h3 class="titre-article-accueil">{{ article.titre }}</h3>
+				        <div class="row">
+				          <div class="col-xs-12">
+				          	<div class="content-article">
+				        		<p>{{ article.contenu|truncatewords_html:50 }}</p>
+				        	</div>
+				            <div class="bouton-lire">
+						      <a href="{% url 'lire' article.id %}" class="btn btn-md btn-default" type="button">
+							  Lire la suite</a></div>
+						    <div class="row">
+						    <span class = "date-right">
+							  Publié le {{ article.date|date:'SHORT_DATETIME_FORMAT' }}
+						    </span>
+						    </div>
+					      </div>
+					    </div>
+				 </div>
+			  </div>
+			</div>
 <!--		<h2 class="titre-article">{{ article.titre }}</h2>
 		
 
@@ -40,8 +43,7 @@
 
 		<p><a href="{% url 'lire' article.id %}">Lire la suite</a></p>
 
-		<hr />
+		<hr />-->
 	{% endfor %}
 
 {% endblock %}
--->

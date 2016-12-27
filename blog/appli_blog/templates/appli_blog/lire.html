@@ -2,8 +2,77 @@
 
 {% block title %}{{ article.titre }}{% endblock %}
 
-{% block content %}
 
+{% block content %}
+  <div class="panel panel-info">
+      <div class="panel-heading">Article
+      <span class="bouton-retour">
+      	<a href="{% url 'accueil' %}" class="btn btn-md btn-default" type="button">Retour à la liste</a>
+      </span>
+      </div>
+        <div class="panel-body">
+        	<!--
+			<p>
+				<a href="{% url 'accueil' %}" class="btn btn-md btn-default" type="button">Retour à la liste des articles</a>
+			</p>
+			-->
+			<div class="article-titre">{{ article.titre }}</div>
+
+			<div class="panel panel-default">
+			<p class="infos-article">Ecrit par {{ article.auteur }}, le {{ article.date }}</p></div>
+
+			<div class="contenu-article">
+				{{ article.contenu }}
+			</div>
+
+
+			<div class="barre-separation"></div>
+
+
+
+			<div class="col-md-offset-1 col-md-10">
+				<h2 class="titre-comments">Commentaires</h2>
+					{% for coms in commentaires %}
+						<div class"row">
+							<div class="panel panel-default">
+							    <div class="panel-body">
+							    	<div class="pseudo-comments">
+							    		{{ coms.pseudo }}, le {{coms.date }}
+							    	</div>
+							    	<p class="texte-comments">{{coms.contenu}}</p>
+										
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				
+				<div class="col-md-12">
+				{% if envoi == True %}  </br><div class="notif"> Votre Commentaire a bien été enregistré ! </div>{% endif %}
+
+				<h3 class="poster-comments">Poster un commentaire :</h3>
+				
+				<form method="post" action="{% url 'lire' article.id %}" class="pure-form">
+					{% csrf_token %}
+					{{ form.as_p }}
+				</br>
+				<p class="bouton-valider">
+					<input class="btn btn-md btn-default" type="submit" />	
+				</p>
+				</form>
+				
+
+				
+				<div class="clear"></div>
+			</div>
+		</div>
+	  </div>
+	</div>
+
+{% endblock %}
+
+
+<!--
 	<p>
 		<a href="{% url 'accueil' %}">Retour à la liste des articles</a>
 	</p>
@@ -43,7 +112,4 @@
 	
 	<div class="clear"></div>
 
-	
-
-
-{% endblock %}
+-->

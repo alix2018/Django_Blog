@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
+from django.contrib import admin
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -51,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'blog.urls'
+admin.site.site_url =  '/appli_blog/accueil'
 
 TEMPLATES = [
     {
@@ -107,9 +109,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'fr-FR'
 # Fuseau horaire, pour l'enregistrement et l'affichage des dates
 # Laissez UTC dans le cas de l'Europe de l'Ouest, c'est notre fuseau ;)
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Paris'
 
-TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -126,3 +127,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+

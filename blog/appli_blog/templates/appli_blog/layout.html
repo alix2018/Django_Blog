@@ -3,25 +3,30 @@
 <html lang="fr">
 <head>
     <title>{% block title %}Mon blog{% endblock %} - Crêpes bretonnes</title>
-    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'appli_blog/styles.css' %}" />
 </head>
 
 <body>
     <header>
-    	<aside>
-        	<a href="{% url 'admin:index' %}">Admin</a>
+        <aside>
+            <a href="{% url 'admin:index' %}" class="btn btn-md btn-default" type="button" >Administration</a>
         </aside>
-
-        <h1>Crêpes-bretonnes.com</h1>
+        <h1>Blog Django</h1>
     </header>
 
-    <div class="container">
-    	{% block content %}{% endblock %}
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-info">
+          <div class="panel-heading">Accueil</div>
+            <div class="panel-body">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+      </div>
     </div>
-            
-    <footer>
-        Mon super blog - Powered by Django
-    </footer>
+
 </body>
 </html>
+

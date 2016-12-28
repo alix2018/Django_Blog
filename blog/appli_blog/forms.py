@@ -4,7 +4,7 @@
 from django import forms
 from .models import Comment
 
-# create the form class.
+# Formulaire pour les commentaires
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment

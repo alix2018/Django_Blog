@@ -11,11 +11,6 @@
       </span>
       </div>
         <div class="panel-body">
-        	<!--
-			<p>
-				<a href="{% url 'accueil' %}" class="btn btn-md btn-default" type="button">Retour à la liste des articles</a>
-			</p>
-			-->
 			<div class="article-titre">{{ article.titre }}</div>
 
 			<div class="panel panel-default">
@@ -60,9 +55,6 @@
 					<input class="btn btn-md btn-default" type="submit" />	
 				</p>
 				</form>
-				
-
-				
 				<div class="clear"></div>
 			</div>
 		</div>
@@ -70,46 +62,3 @@
 	</div>
 
 {% endblock %}
-
-
-<!--
-	<p>
-		<a href="{% url 'accueil' %}">Retour à la liste des articles</a>
-	</p>
-
-	<h2 class="titre-article">{{ article.titre }}</h2>
-	<p class="infos-article">Par {{ article.auteur }}, le {{ article.date }}</p>
-
-	<div class="contenu-article">
-		{{ article.contenu }}
-	</div>
-
-	<h3 class="titre-comments">Commentaires</h3>
-
-	<div class="commentaire">
-		{% for coms in commentaires %}
-		<li><p><i>Par {{ coms.pseudo }}, le {{coms.date }}</i></p>
-		<p> {{coms.contenu}}</p>
-		</li>
-		{% endfor %}
-	</div>
-	
-	<h4>Poster votre propre commentaire</h4>
-	
-	<form method="post" action="{% url 'lire' article.id %}" class="pure-form">
-
-		{% csrf_token %}
-
-		{{ form.as_p }}
-	
-	</br>
-	<p style="text-align:center">
-		<input class="pure-button pure-button-primary" type="submit" />	
-	</p>
-	</form>
-	
-	{% if envoi == True %}  </br><FONT color="red"> Votre Commentaire a bien été enregistré ! </FONT>{% endif %}
-	
-	<div class="clear"></div>
-
--->

@@ -23,7 +23,7 @@
 						      <a href="{% url 'lire' article.id %}" class="btn btn-md btn-default" type="button">
 							  Lire la suite</a></div>
 						    <div class="row">
-						    <span class = "date-right">
+						    <span class = "date-droite">
 							  Publié le {{ article.date|date:'SHORT_DATETIME_FORMAT' }}
 						    </span>
 						    </div>
@@ -32,18 +32,6 @@
 				 </div>
 			  </div>
 			</div>
-<!--		<h2 class="titre-article">{{ article.titre }}</h2>
-		
-
-		<p class="infos-article">Le {{ article.date|date:'SHORT_DATETIME_FORMAT' }}</p>
-
-		<div class="contenu-article">
-			{{ article.contenu|truncatewords_html:30 }}
-		</div>
-
-		<p><a href="{% url 'lire' article.id %}">Lire la suite</a></p>
-
-		<hr />-->
 	{% endfor %}
 
 {% endblock %}
